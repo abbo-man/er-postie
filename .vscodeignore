@@ -1,0 +1,10 @@
+.git/**
+.gitignore
+.cursor/**
+node_modules/**
+src/**
+webview/**
+tsconfig.json
+vite.*.config.ts
+package-lock.json
+seed.local.json

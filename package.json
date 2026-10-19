@@ -1,0 +1,230 @@
+{
+  "name": "er-postie",
+  "displayName": "ER Postie",
+  "description": "A small, project-oriented HTTP and GraphQL client.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "private": true,
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.cjs",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "erPostie",
+          "title": "ER Postie",
+          "icon": "media/postie.svg"
+        }
+      ]
+    },
+    "views": {
+      "erPostie": [
+        {
+          "id": "erPostie.collections",
+          "name": "Collections"
+        },
+        {
+          "id": "erPostie.environments",
+          "name": "Environments"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "erPostie.createFolder",
+        "title": "ER Postie: New Folder",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "erPostie.createRequest",
+        "title": "ER Postie: New Request",
+        "icon": "$(add)"
+      },
+      {
+        "command": "erPostie.rename",
+        "title": "Rename"
+      },
+      {
+        "command": "erPostie.duplicate",
+        "title": "Duplicate"
+      },
+      {
+        "command": "erPostie.delete",
+        "title": "Delete"
+      },
+      {
+        "command": "erPostie.addExample",
+        "title": "Add example",
+        "icon": "$(add)"
+      },
+      {
+        "command": "erPostie.openExample",
+        "title": "Open example"
+      },
+      {
+        "command": "erPostie.deleteExample",
+        "title": "Delete"
+      },
+      {
+        "command": "erPostie.configureAuth",
+        "title": "Configure Authentication"
+      },
+      {
+        "command": "erPostie.createEnvironment",
+        "title": "ER Postie: New Environment",
+        "icon": "$(add)"
+      },
+      {
+        "command": "erPostie.selectEnvironment",
+        "title": "Use Environment"
+      },
+      {
+        "command": "erPostie.editEnvironment",
+        "title": "Edit Variables"
+      },
+      {
+        "command": "erPostie.addVariable",
+        "title": "Add Variable",
+        "icon": "$(add)"
+      },
+      {
+        "command": "erPostie.editVariable",
+        "title": "Edit Variable",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "erPostie.deleteVariable",
+        "title": "Delete Variable"
+      },
+      {
+        "command": "erPostie.deleteEnvironment",
+        "title": "Delete Environment"
+      },
+      {
+        "command": "erPostie.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "erPostie.createRequest",
+          "when": "view == erPostie.collections",
+          "group": "navigation@1"
+        },
+        {
+          "command": "erPostie.createFolder",
+          "when": "view == erPostie.collections",
+          "group": "navigation@2"
+        },
+        {
+          "command": "erPostie.createEnvironment",
+          "when": "view == erPostie.environments",
+          "group": "navigation@1"
+        },
+        {
+          "command": "erPostie.refresh",
+          "when": "view == erPostie.collections",
+          "group": "navigation@3"
+        },
+        {
+          "command": "erPostie.refresh",
+          "when": "view == erPostie.environments",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "erPostie.createRequest",
+          "when": "view == erPostie.collections && viewItem == folder",
+          "group": "inline@1"
+        },
+        {
+          "command": "erPostie.createFolder",
+          "when": "view == erPostie.collections && viewItem == folder",
+          "group": "inline@2"
+        },
+        {
+          "command": "erPostie.addExample",
+          "when": "view == erPostie.collections && viewItem == request",
+          "group": "inline@1"
+        },
+        {
+          "command": "erPostie.configureAuth",
+          "when": "view == erPostie.collections && (viewItem == folder || viewItem == request)",
+          "group": "auth@1"
+        },
+        {
+          "command": "erPostie.deleteExample",
+          "when": "view == erPostie.collections && viewItem == example",
+          "group": "manage@1"
+        },
+        {
+          "command": "erPostie.rename",
+          "when": "view == erPostie.collections && (viewItem == folder || viewItem == request)",
+          "group": "manage@1"
+        },
+        {
+          "command": "erPostie.duplicate",
+          "when": "view == erPostie.collections && (viewItem == folder || viewItem == request)",
+          "group": "manage@2"
+        },
+        {
+          "command": "erPostie.delete",
+          "when": "view == erPostie.collections && (viewItem == folder || viewItem == request)",
+          "group": "manage@3"
+        },
+        {
+          "command": "erPostie.selectEnvironment",
+          "when": "view == erPostie.environments && viewItem == environment",
+          "group": "inline@1"
+        },
+        {
+          "command": "erPostie.addVariable",
+          "when": "view == erPostie.environments && viewItem == environment",
+          "group": "inline@2"
+        },
+        {
+          "command": "erPostie.editEnvironment",
+          "when": "view == erPostie.environments && viewItem == environment",
+          "group": "manage@1"
+        },
+        {
+          "command": "erPostie.deleteEnvironment",
+          "when": "view == erPostie.environments && viewItem == environment",
+          "group": "manage@2"
+        },
+        {
+          "command": "erPostie.editVariable",
+          "when": "view == erPostie.environments && viewItem == environmentVariable",
+          "group": "inline@1"
+        },
+        {
+          "command": "erPostie.deleteVariable",
+          "when": "view == erPostie.environments && viewItem == environmentVariable",
+          "group": "manage@1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:extension": "vite build --config vite.extension.config.ts",
+    "build:webview": "vite build --config vite.webview.config.ts",
+    "build": "npm run typecheck && npm run build:extension && npm run build:webview",
+    "package": "npm run build && vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "@types/vscode": "^1.105.0",
+    "@vscode/vsce": "^3.6.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
+  }
+}
