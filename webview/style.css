@@ -1,0 +1,212 @@
+:root {
+  color-scheme: light dark;
+  font-family: var(--vscode-font-family);
+  color: var(--vscode-foreground);
+  background: var(--vscode-editor-background);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.toolbar,
+.request-line,
+.row,
+.response-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.toolbar {
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.request-line input {
+  flex: 1;
+}
+
+button,
+input,
+select,
+textarea {
+  border: 1px solid var(--vscode-input-border, transparent);
+  color: var(--vscode-input-foreground);
+  background: var(--vscode-input-background);
+  padding: 7px 9px;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: var(--vscode-button-foreground);
+  background: var(--vscode-button-background);
+}
+
+button:hover {
+  background: var(--vscode-button-hoverBackground);
+}
+
+button.secondary {
+  color: var(--vscode-foreground);
+  background: var(--vscode-button-secondaryBackground);
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  font-family: var(--vscode-editor-font-family);
+}
+
+.json-editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: auto;
+  height: 180px;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid var(--vscode-input-border, transparent);
+  background: var(--vscode-input-background);
+  font-family: var(--vscode-editor-font-family);
+  font-size: var(--vscode-editor-font-size, 13px);
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+.json-highlight,
+.json-editor textarea {
+  grid-area: 1 / 1;
+  margin: 0;
+  border: 0;
+  padding: 7px 9px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  font: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.json-highlight {
+  pointer-events: none;
+  color: var(--vscode-editor-foreground);
+}
+
+.json-editor textarea {
+  resize: none;
+  overflow: hidden;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--vscode-editor-foreground);
+  -webkit-text-fill-color: transparent;
+}
+
+.json-editor textarea::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+  -webkit-text-fill-color: var(--vscode-input-placeholderForeground);
+}
+
+.json-editor textarea::selection {
+  background: var(--vscode-editor-selectionBackground);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.json-key {
+  color: var(--vscode-symbolIcon-propertyForeground, var(--vscode-debugTokenExpression-name));
+}
+
+.json-string {
+  color: var(--vscode-symbolIcon-stringForeground, var(--vscode-debugTokenExpression-string));
+}
+
+.json-number {
+  color: var(--vscode-symbolIcon-numberForeground, var(--vscode-debugTokenExpression-number));
+}
+
+.json-literal {
+  color: var(--vscode-symbolIcon-booleanForeground, var(--vscode-debugTokenExpression-boolean));
+}
+
+details {
+  margin-top: 12px;
+  border: 1px solid var(--vscode-panel-border);
+  padding: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rows {
+  margin: 8px 0;
+}
+
+.row {
+  margin: 6px 0;
+}
+
+.row input:not([type="checkbox"]),
+.row select {
+  flex: 1;
+  min-width: 0;
+}
+
+.icon {
+  width: 32px;
+  padding: 7px;
+}
+
+.hidden {
+  display: none;
+}
+
+.response {
+  margin-top: 18px;
+  border-top: 1px solid var(--vscode-panel-border);
+  padding-top: 14px;
+}
+
+.response pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 12px;
+  background: var(--vscode-textCodeBlock-background);
+  max-height: 420px;
+  overflow: auto;
+  font-family: var(--vscode-editor-font-family);
+  font-size: var(--vscode-editor-font-size, 13px);
+  line-height: 1.5;
+}
+
+.error {
+  color: var(--vscode-errorForeground);
+}
+
+.muted {
+  color: var(--vscode-descriptionForeground);
+}
+
+.grow {
+  flex: 1;
+}
+
+button.grow {
+  text-align: left;
+}
